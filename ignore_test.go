@@ -2,15 +2,11 @@
 package ignore
 
 import (
-	"os"
-
-	"io/ioutil"
-	"path/filepath"
-
 	"fmt"
-	"testing"
-
+	"os"
+	"path/filepath"
 	"runtime"
+	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -27,7 +23,7 @@ func writeFileToTestDir(fname, content string) {
 	testDirPath := "." + string(filepath.Separator) + TEST_DIR
 	testFilePath := testDirPath + string(filepath.Separator) + fname
 	_ = os.MkdirAll(testDirPath, 0755)
-	_ = ioutil.WriteFile(testFilePath, []byte(content), os.ModePerm)
+	_ = os.WriteFile(testFilePath, []byte(content), os.ModePerm)
 }
 
 func cleanupTestDir() {
